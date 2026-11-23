@@ -1,0 +1,24 @@
+<section id="roi">
+<p class="eyebrow">HOW WE MEASURE VALUE</p>
+<h2>Value is issues caught before approval; a dollar figure needs a baseline we do not have yet</h2>
+<div class="row" style="align-items:stretch">
+<div style="flex:3">
+<table style="font-size:26px">
+<tr><th style="width:52%">What we would count</th><th style="width:26%">Where it comes from</th><th style="width:22%">Status</th></tr>
+<tr><td>Issues flagged per review, by severity and by area (safety, maintenance, QC)</td><td>Every report</td><td><span class="status-now">Recorded now</span></td></tr>
+<tr><td>Recommendation mix: proceed to sign-off, revise, reject</td><td>Report and sign-offs</td><td><span class="status-now">Recorded now</span></td></tr>
+<tr><td>Forms returned as incomplete</td><td>Every run</td><td><span class="status-now">Recorded now</span></td></tr>
+<tr><td>False-flag rate: flags a reviewer judges wrong</td><td>Not captured; sign-off is approve or deny only</td><td><span class="status-todo">To set up</span></td></tr>
+<tr><td>Reviewer time per review, before and after</td><td>Not recorded</td><td><span class="status-todo">To set up</span></td></tr>
+<tr><td>Cost avoided or incidents prevented</td><td>No baseline or volume given</td><td><span class="status-todo">To set up</span></td></tr>
+</table>
+</div>
+<div class="card amber" style="flex:1; justify-content:center; gap:16px">
+<p class="big" style="color:#12262B">36/36</p>
+<p class="t">planted defects flagged in testing: 12 defect cases, run 3 times each</p>
+<p class="t">Planted by the build team. Not a real-world catch rate.</p>
+</div>
+</div>
+<p class="foot">Source: runs/20261123-120116-process-review-eval-006e12/report.md, flows/process_review/README.md section 2.</p>
+<aside>The project’s own definition of return: flags found per process review. In testing that is the share of deliberately planted defects that were flagged: 36 of 36 across three repeats of 12 defect cases. Clean cases in the same test set must also raise no major or critical flag, which guards against false alarms. What the repository does not have: how many flags supervisors catch today, how many reviews per week, what a review costs now. Those are needed before any dollar figure. The false-flag rate needs one new thing: a place where the reviewer marks each flag right or wrong. Today a sign-off records only approve or deny.</aside>
+</section>

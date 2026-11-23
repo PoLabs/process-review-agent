@@ -1,0 +1,11 @@
+Process submission form
+
+Product: CX-200
+
+Chemicals
+- Toluene: 120 kg
+- Acrylic resin AR7: 300 kg
+
+Steps
+1. Charge toluene and acrylic resin AR7 into reactor R-101 at 25 °C and 1 bar for 20 minutes.
+2. Mix toluene and acrylic resin AR7 in reactor R-101 at 45 °C and 1 bar for 90 minutes.

@@ -1,0 +1,23 @@
+<section id="limits">
+<p class="eyebrow">LIMITATIONS</p>
+<h2>It checks a form against documents; it cannot see the plant</h2>
+<div class="row" style="align-items:stretch">
+<div class="card" style="flex:1">
+<h3>It takes at face value</h3>
+<p class="t"><b>The form.</b> Quantities, units, temperatures and pressures are used as typed.</p>
+<p class="t"><b>The documents.</b> It cannot tell a wrong limit from a right one, or notice a gap in what they cover.</p>
+<p class="t"><b>Equipment status.</b> Only as the maintenance document records it, not live lockouts or condition.</p>
+<p class="t"><b>Controls.</b> The form has no field for ventilation or protective gear, so it asks the supervisor to confirm them.</p>
+</div>
+<div class="card tint" style="flex:1">
+<h3>It cannot do</h3>
+<p class="t"><b>Inspect or measure.</b> No sensors, sampling or physical inspection.</p>
+<p class="t"><b>Judge new chemistry.</b> If it is not in the documents, it flags the gap and stops.</p>
+<p class="t"><b>Catch everything.</b> Fixed rules exist only where a document has a rule row. QC specs have none, so QC findings rely on the AI, which can miss things or raise false alarms.</p>
+<p class="t"><b>Check who signs.</b> Approver names are typed in, not verified.</p>
+</div>
+</div>
+<p class="strip" style="margin-top:24px"><b>Test limit:</b> 17 review cases written by the build team, with no held-out set. Real-world accuracy is unknown.</p>
+<p class="foot">Source: flows/process_review/README.md sections 4 to 6 and rules.py.</p>
+<aside>From the repository’s own list of caveats. In an offline dry run with no AI at all, code alone caught 10 of the 12 planted defect cases; the other two (a QC specification range and a QC cure temperature above an equipment rating) need the AI. That is the clearest picture of where the AI matters and where it can miss. Reports are held in memory in the current build, so a server restart loses them; sign-in and protected storage are listed as not yet provided.</aside>
+</section>

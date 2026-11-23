@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+runs/
+reports/
+.pytest_cache/
+.ruff_cache/
+.scratch/
+node_modules/
+web/dist/

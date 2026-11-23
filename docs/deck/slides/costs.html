@@ -1,0 +1,28 @@
+<section id="costs">
+<p class="eyebrow">COSTS</p>
+<h2>A review is about five AI calls and 18,000 tokens; the dollar price is still to be set</h2>
+<div class="row" style="align-items:stretch">
+<div style="flex:3">
+<table style="font-size:26px">
+<tr><th style="width:32%">Step in one review</th><th style="width:20%">Model size</th><th style="width:10%">Calls</th><th style="width:38%">Tokens in / out</th></tr>
+<tr><td>Plan searches</td><td>Smallest</td><td>1</td><td>941 / 266</td></tr>
+<tr><td>Safety review</td><td>Mid-size</td><td>1</td><td>3,218 / 526</td></tr>
+<tr><td>Maintenance review</td><td>Mid-size</td><td>1</td><td>2,382 / 189</td></tr>
+<tr><td>QC review</td><td>Mid-size</td><td>1</td><td>2,227 / 396</td></tr>
+<tr><td>Report and conflicts</td><td>Largest</td><td>1.2</td><td>5,338 / 997 per call</td></tr>
+<tr><td><b>Whole review</b></td><td></td><td><b>5.2</b></td><td><b>about 15,300 / 2,600</b></td></tr>
+</table>
+<p class="small" style="margin-top:20px">A question costs about 3 small calls: roughly 2,200 tokens in and 140 out on average.</p>
+</div>
+<div class="card tint" style="flex:2">
+<h3>Infrastructure</h3>
+<p class="t">Web app, API and a developer console, packaged in Docker.</p>
+<p class="t">Redis memory store, held in RAM only.</p>
+<p class="t">Optional embedding service for document search.</p>
+<h3 style="margin-top:8px">Not in the repo</h3>
+<p class="t">Per-token prices, hosting cost, a dollar figure per review.</p>
+</div>
+</div>
+<p class="foot">Source: averages of 48 full reviews in runs/20261123-120116-process-review-eval-006e12/trace.jsonl and 54 questions in …-process-qa-eval-c4710c.</p>
+<aside>How the numbers were derived. A saved test run (the 48 complete reviews among 51; 3 incomplete forms make no model calls) logs input and output tokens for every call. Averages: planning 941 in and 266 out; safety 3,218 and 526; maintenance 2,382 and 189; QC 2,227 and 396. The report step ran 59 times for 48 reviews, so 1.2 calls per review on average because the wording check sent 11 reports back once. Summed per review: about 15,300 tokens in and 2,600 out, which is about 18,000 in total. To turn this into dollars, multiply by current per-token prices for each model size, which are not stored in the repository. The kit’s note of about 2 cents per case per repeat is for a different agent (patient triage), so it is not used here. A cheaper model profile exists in the code but has not been tested for accuracy. Document search uses an optional embedding service; without its key, search falls back to keyword matching. Its cost is not recorded. The largest real cost is likely people time: two sign-offs for critical reports.</aside>
+</section>

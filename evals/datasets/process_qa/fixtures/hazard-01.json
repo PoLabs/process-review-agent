@@ -1,0 +1,105 @@
+{
+  "report": {
+    "blocked_actions": [
+      "sign_off_process"
+    ],
+    "dropped": 0,
+    "executed_actions": [],
+    "fallback_report": false,
+    "flags": [
+      {
+        "citations": [
+          {
+            "chunk_id": "SAF-INC-001@D#2",
+            "doc_id": "SAF-INC-001",
+            "quote": "Acetone must never be combined with hydrogen peroxide.",
+            "version": "D"
+          }
+        ],
+        "detail": "acetone and hydrogen_peroxide are both on this form. Hazard: forms explosive organic peroxides.",
+        "kind": "incompatible",
+        "lane": "safety",
+        "locked": true,
+        "severity": "critical",
+        "source": "rule",
+        "subjects": [
+          "acetone",
+          "hydrogen_peroxide"
+        ],
+        "title": "acetone and hydrogen_peroxide must not be combined"
+      }
+    ],
+    "guard_violations": [],
+    "incomplete": [],
+    "injection_flagged": false,
+    "lanes": {
+      "maintenance": "maintenance review: see flags.",
+      "qc": "qc review: see flags.",
+      "safety": "safety review: see flags."
+    },
+    "recommendation": "revise",
+    "required_approvers": [
+      "supervisor",
+      "ehs"
+    ],
+    "signoffs": [
+      {
+        "approver": "supervisor:demo",
+        "decision": "denied",
+        "role": "supervisor"
+      }
+    ],
+    "status": "not_approved",
+    "summary": "See the flags below.",
+    "tool_calls": [
+      {
+        "name": "sign_off_process"
+      }
+    ]
+  },
+  "submission": {
+    "chemicals": [
+      {
+        "concentration_pct": null,
+        "id": "acetone",
+        "quantity": 80,
+        "unit": "L"
+      },
+      {
+        "concentration_pct": 35,
+        "id": "hydrogen_peroxide",
+        "quantity": 20,
+        "unit": "L"
+      }
+    ],
+    "notes": "",
+    "product": "CL-5",
+    "steps": [
+      {
+        "action": "charge",
+        "chemicals": [
+          "acetone"
+        ],
+        "duration_min": 10,
+        "equipment": "M-7",
+        "n": 1,
+        "pressure_bar": 0,
+        "temp_c": 25
+      },
+      {
+        "action": "mix",
+        "chemicals": [
+          "acetone",
+          "hydrogen_peroxide"
+        ],
+        "duration_min": 30,
+        "equipment": "M-7",
+        "n": 2,
+        "pressure_bar": 0,
+        "temp_c": 25
+      }
+    ],
+    "submission_id": "SUB-0003",
+    "submitter": "EMP-013"
+  }
+}

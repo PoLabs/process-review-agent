@@ -1,0 +1,24 @@
+<section id="how">
+<p class="eyebrow">HOW IT WORKS</p>
+<h2>Code checks, AI reads and writes, people decide</h2>
+<div class="row" style="gap:0; align-items:stretch">
+<div class="step person"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">1</p><h3>Submit</h3></div><p class="t">Intern types the form or uploads a document. The agent drafts the form; the intern confirms every field.</p><p class="tag">PERSON + AI</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step code"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">2</p><h3>Hazard rules</h3></div><p class="t">Fixed rules check dangerous mixes, temperature and concentration limits, and equipment ratings.</p><p class="tag">CODE</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step code"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">3</p><h3>Look up</h3></div><p class="t">Searches only the current safety, maintenance and QC documents for passages about this process.</p><p class="tag">CODE</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step ai"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">4</p><h3>Review</h3></div><p class="t">Three AI reviewers, one per area, flag issues. Each flag needs a quoted passage.</p><p class="tag">AI</p></div>
+</div>
+<div class="row" style="gap:0; align-items:stretch; margin-top:24px">
+<div class="step code"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">5</p><h3>Verify</h3></div><p class="t">Drops any claim whose quote is not in a current document. Items with no document become flags.</p><p class="tag">CODE</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step ai"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">6</p><h3>Report</h3></div><p class="t">Looks for conflicts across areas, then writes a summary and a recommendation. Code checks the wording.</p><p class="tag">AI + CODE</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step person"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">7</p><h3>Sign-off</h3></div><p class="t">Supervisor approves the exact report. An EHS engineer also approves if any flag is critical.</p><p class="tag">PERSON</p></div>
+<div style="width:40px"></div>
+<div class="card tint" style="flex:1; justify-content:center"><p class="t">An incomplete form goes back to the intern and no review runs.</p></div>
+</div>
+<p class="foot">Source: flows/process_review/GRAPH.md and README section 3. Top bar colour: teal = code, amber = AI, dark = person.</p>
+<aside>Walk through the seven steps. Teal bar = plain code that behaves the same way every time. Amber = an AI model reads or writes. Dark = a person. Steps 2 and 5 are the safety net: the hazard rules and the verify step are code, not AI judgment. A review normally makes five AI calls: one to plan searches, three area reviews, one to write the report. A sixth happens if the report wording check sends it back once.</aside>
+</section>

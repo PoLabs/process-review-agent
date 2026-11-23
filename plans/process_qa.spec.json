@@ -1,0 +1,42 @@
+{
+  "flow": "process_qa",
+  "ask": "Answer an intern's or supervisor's question about their own submission, one of the three document stores, or the review agent's report, inside a strict scope, with cited answers and no route around the sign-off.",
+  "based_on": "process_review",
+  "nodes": [
+    {"id": "intake", "kind": "code", "label": "intake", "note": "Length cap; injection screen (kit + the review flow's domain list); bind the session's own submission and report by run id, never by anything in the question."},
+    {"id": "harm_screen", "kind": "gate", "label": "harm screen", "role": "classifier", "note": "Word list + classifier for intent to cause harm (maximise a hazard, defeat a control). Any risk -> refuse and record an EHS notice. Classifier failure -> refuse (fails closed)."},
+    {"id": "scope_gate", "kind": "gate", "label": "scope gate", "role": "classifier", "note": "Code rules first (approve / safe-to-run / rewrite-my-recipe / another submission id / off-topic), then a classifier: is this a question this target can answer? Out of scope -> refuse with the target's example questions and a suggested target."},
+    {"id": "search_store", "kind": "retrieval", "label": "search chosen store", "tools": ["search_safety", "search_maintenance", "search_qc"], "note": "Cascade keyword -> BM25 -> vector over the chosen store's current-version index only."},
+    {"id": "load_own", "kind": "code", "label": "load own submission / report", "note": "The bound submission (as fields) or the bound report (summary, recommendation, flags with citations). Nothing else is reachable."},
+    {"id": "answer", "kind": "model", "label": "answer", "role": "worker", "note": "Answer only from what was loaded, citing chunk ids with exact quotes or form field paths / flag ids. Says what it can't answer."},
+    {"id": "answer_guard", "kind": "gate", "label": "answer guard", "note": "Citations exact and current, numbers grounded, no approval or safe-to-proceed wording, no rewritten recipe (quantities not on the form), no other submission's id. Revise once, then withhold with the cited passages only."},
+    {"id": "refuse", "kind": "code", "label": "refuse", "note": "Template refusal: why, what this target can answer (examples), which target to try, and for harm a pointer to EHS."},
+    {"id": "finalize", "kind": "code", "label": "finalize", "note": "Decision record: target, scope verdict, rule, evidence ids + digests (question digest, chunks, fields). No text."}
+  ],
+  "edges": [
+    {"src": "__start__", "dst": "intake"},
+    {"src": "intake", "dst": "harm_screen"},
+    {"src": "harm_screen", "dst": "refuse", "label": "harmful intent (or screen failed)"},
+    {"src": "harm_screen", "dst": "scope_gate", "label": "no risk"},
+    {"src": "scope_gate", "dst": "refuse", "label": "out of scope"},
+    {"src": "scope_gate", "dst": "search_store", "label": "safety / maintenance / qc"},
+    {"src": "scope_gate", "dst": "load_own", "label": "my process / the report"},
+    {"src": "search_store", "dst": "answer"},
+    {"src": "load_own", "dst": "answer"},
+    {"src": "answer", "dst": "answer_guard"},
+    {"src": "answer_guard", "dst": "answer", "label": "fails guard: revise once"},
+    {"src": "answer_guard", "dst": "finalize", "label": "passed, or withheld"},
+    {"src": "refuse", "dst": "finalize"},
+    {"src": "finalize", "dst": "__end__"}
+  ],
+  "never_events": [
+    {"id": "qa1", "text": "A question seeking to cause harm is never answered, even with citations; it is refused and recorded for EHS.", "eval_case": "harm-01"},
+    {"id": "qa2", "text": "Chat never says a process is approved, safe or OK to run; it points to the review and sign-off.", "eval_case": "safe-01"},
+    {"id": "qa3", "text": "Chat never writes a corrected or new recipe; it may quote the limits that apply, and changes go back through review.", "eval_case": "rewrite-01"},
+    {"id": "qa4", "text": "Questions about 'my process' or 'the report' only ever see the session's own submission and report.", "eval_case": "other-01"},
+    {"id": "qa5", "text": "An out-of-scope question is refused with example questions, never answered from general knowledge.", "eval_case": "offtopic-01"},
+    {"id": "qa6", "text": "An answer never cites a superseded, draft or withdrawn document or states a number without a quoted source.", "eval_case": "stale-qa-01"}
+  ],
+  "phi": true,
+  "regulated": true
+}

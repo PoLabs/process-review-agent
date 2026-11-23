@@ -1,0 +1,237 @@
+{
+  "flow": "process_review",
+  "ask": "Review an intern-submitted formulation or chemical process against the current safety, maintenance and QC documents, flag every issue with a citation, and recommend; only people approve.",
+  "based_on": "pr_review",
+  "nodes": [
+    {
+      "id": "intake",
+      "kind": "code",
+      "label": "intake",
+      "note": "Validate the submission form (chemicals, quantities, units, temps, pressures, equipment, steps); injection screen on free-text notes; pseudonymize submitter; archive submission by sha256."
+    },
+    {
+      "id": "hazard_rules",
+      "kind": "gate",
+      "label": "hazard rules",
+      "note": "Deterministic: incompatible-pair matrix and temp/pressure/concentration limits from the current safety tables. Hits become locked flags no model can remove or downgrade."
+    },
+    {
+      "id": "plan_queries",
+      "kind": "model",
+      "label": "plan queries",
+      "role": "classifier",
+      "note": "Split the submission into questions per store: chemicals -> safety, equipment -> maintenance, specs -> QC. All three lanes always run."
+    },
+    {
+      "id": "search_safety",
+      "kind": "retrieval",
+      "label": "search safety",
+      "tools": [
+        "search_safety"
+      ],
+      "note": "Cascade keyword -> BM25 -> vector over the current-version safety index only (SDS, SOPs, incompatibilities)."
+    },
+    {
+      "id": "search_maintenance",
+      "kind": "retrieval",
+      "label": "search maintenance",
+      "tools": [
+        "search_maintenance"
+      ],
+      "note": "Same cascade over current maintenance manuals: equipment ratings, service status, lockout."
+    },
+    {
+      "id": "search_qc",
+      "kind": "retrieval",
+      "label": "search QC",
+      "tools": [
+        "search_qc"
+      ],
+      "note": "Same cascade over current QC standards: specs, acceptance ranges, test methods."
+    },
+    {
+      "id": "safety_review",
+      "kind": "model",
+      "label": "safety review",
+      "role": "worker",
+      "note": "Summary + flags (severity, quoted passage, chunk id) for the safety lane only."
+    },
+    {
+      "id": "maintenance_review",
+      "kind": "model",
+      "label": "maintenance review",
+      "role": "worker",
+      "note": "Summary + flags for the maintenance lane only."
+    },
+    {
+      "id": "qc_review",
+      "kind": "model",
+      "label": "QC review",
+      "role": "worker",
+      "note": "Summary + flags for the QC lane only."
+    },
+    {
+      "id": "verify",
+      "kind": "gate",
+      "label": "verify citations",
+      "note": "Every flag and number must quote a chunk retrieved this run from a doc still current now; stale or unquoted ones are dropped and replaced by a flag. Uncovered items become gap flags."
+    },
+    {
+      "id": "synthesis",
+      "kind": "model",
+      "label": "synthesis",
+      "role": "supervisor",
+      "note": "Cross-domain conflicts (QC spec vs equipment rating vs safety limit), then the supervisor report and a recommendation: proceed to sign-off, revise, or reject."
+    },
+    {
+      "id": "report_guard",
+      "kind": "gate",
+      "label": "report guard",
+      "note": "Closed recommendation vocabulary (never approved); every locked, gap and verified flag present at no lower severity; decides required approvers."
+    },
+    {
+      "id": "supervisor_signoff",
+      "kind": "gate",
+      "label": "supervisor sign-off",
+      "note": "Interrupt: the floor supervisor approves, returns or rejects the exact report digest."
+    },
+    {
+      "id": "ehs_signoff",
+      "kind": "gate",
+      "label": "EHS sign-off",
+      "note": "Interrupt: a process-safety / EHS engineer must also approve when any critical flag exists."
+    },
+    {
+      "id": "finalize",
+      "kind": "code",
+      "label": "finalize",
+      "note": "Decision record (approvers, evidence ids + digests), report archived by digest, 6-year retention tag."
+    }
+  ],
+  "edges": [
+    {
+      "src": "__start__",
+      "dst": "intake"
+    },
+    {
+      "src": "intake",
+      "dst": "hazard_rules",
+      "label": "form complete"
+    },
+    {
+      "src": "intake",
+      "dst": "finalize",
+      "label": "incomplete: returned to submitter"
+    },
+    {
+      "src": "hazard_rules",
+      "dst": "plan_queries"
+    },
+    {
+      "src": "plan_queries",
+      "dst": "search_safety"
+    },
+    {
+      "src": "plan_queries",
+      "dst": "search_maintenance"
+    },
+    {
+      "src": "plan_queries",
+      "dst": "search_qc"
+    },
+    {
+      "src": "search_safety",
+      "dst": "safety_review"
+    },
+    {
+      "src": "search_maintenance",
+      "dst": "maintenance_review"
+    },
+    {
+      "src": "search_qc",
+      "dst": "qc_review"
+    },
+    {
+      "src": "safety_review",
+      "dst": "verify"
+    },
+    {
+      "src": "maintenance_review",
+      "dst": "verify"
+    },
+    {
+      "src": "qc_review",
+      "dst": "verify"
+    },
+    {
+      "src": "verify",
+      "dst": "synthesis"
+    },
+    {
+      "src": "synthesis",
+      "dst": "report_guard"
+    },
+    {
+      "src": "report_guard",
+      "dst": "synthesis",
+      "label": "fails guard: revise once"
+    },
+    {
+      "src": "report_guard",
+      "dst": "supervisor_signoff",
+      "label": "passed, or code-built fallback report"
+    },
+    {
+      "src": "supervisor_signoff",
+      "dst": "ehs_signoff",
+      "label": "approved + critical flag"
+    },
+    {
+      "src": "supervisor_signoff",
+      "dst": "finalize",
+      "label": "rejected, returned, or no critical flag"
+    },
+    {
+      "src": "ehs_signoff",
+      "dst": "finalize"
+    },
+    {
+      "src": "finalize",
+      "dst": "__end__"
+    }
+  ],
+  "never_events": [
+    {
+      "id": "ne0",
+      "text": "The agent never approves a process or formulation; only the recorded human sign-offs do.",
+      "eval_case": "approve-01"
+    },
+    {
+      "id": "ne1",
+      "text": "No superseded, draft, withdrawn or discontinued document version is ever cited; approved amendments are merged into their base first.",
+      "eval_case": "stale-01"
+    },
+    {
+      "id": "ne2",
+      "text": "A rule-detected hazard (incompatible pair, over-limit temp/pressure/concentration) is never dropped or downgraded by a model.",
+      "eval_case": "hazard-01"
+    },
+    {
+      "id": "ne3",
+      "text": "No limit or spec appears in the report without a quoted, current, cited source.",
+      "eval_case": "ground-01"
+    },
+    {
+      "id": "ne4",
+      "text": "Missing coverage (no current doc for a chemical, step or machine) is always a flag, never silence.",
+      "eval_case": "gap-01"
+    },
+    {
+      "id": "ne5",
+      "text": "A report with any critical flag never completes without EHS sign-off.",
+      "eval_case": "ehs-01"
+    }
+  ],
+  "phi": true,
+  "regulated": true
+}

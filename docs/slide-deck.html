@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chemical Process Review Agent: Stakeholder Overview</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500..700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600&display=swap">
+<style>
+:root {
+  --ink: #12262B;
+  --paper: #F3F1EA;
+  --paper-2: #E8E5D9;
+  --card: #FBFAF6;
+  --line: #D3CEBD;
+  --muted: #3E4E52;
+  --teal: #1F6F6A;
+  --amber: #F2B134;
+  --soft-on-dark: #C9D8D6;
+}
+
+body { font-family: 'Public Sans', Arial, sans-serif; }
+
+section {
+  background: #F3F1EA;
+  color: #12262B;
+  font-family: 'Public Sans', Arial, sans-serif;
+  padding: 128px 128px 160px;
+  display: flex;
+  flex-direction: column;
+  counter-increment: page;
+}
+
+section.dark { background: #12262B; color: #F3F1EA; }
+
+h1, h2, h3 { font-family: 'DM Sans', Arial, sans-serif; margin: 0; }
+h1 { font-size: 112px; font-weight: 700; line-height: 1.05; }
+h2 { font-size: 56px; font-weight: 700; line-height: 1.12; margin-bottom: 36px; }
+h3 { font-size: 34px; font-weight: 700; line-height: 1.15; }
+
+.eyebrow { font-size: 24px; font-weight: 600; letter-spacing: 3px; color: #1F6F6A; margin: 0 0 20px; }
+.dark .eyebrow { color: #F2B134; }
+.lead { font-size: 36px; line-height: 1.35; color: #C9D8D6; margin: 0; }
+.body { font-size: 28px; line-height: 1.35; margin: 0; color: #3E4E52; }
+.small { font-size: 24px; line-height: 1.35; margin: 0; color: #3E4E52; }
+
+.foot { position: absolute; left: 128px; bottom: 64px; width: 1664px; font-size: 24px; color: #4C5C60; margin: 0; }
+.dark .foot { color: #AFC3C0; }
+
+.row { display: flex; gap: 32px; }
+.col { display: flex; flex-direction: column; gap: 24px; }
+.grow { flex: 1; }
+
+.card { background: #FBFAF6; border: 2px solid #D3CEBD; border-radius: 16px; padding: 28px 32px; display: flex; flex-direction: column; gap: 12px; }
+.card .t { font-size: 26px; line-height: 1.35; margin: 0; color: #3E4E52; }
+.card.tint { background: #E8E5D9; }
+.card.ink { background: #12262B; border-color: #12262B; }
+.card.ink h3 { color: #F3F1EA; }
+.card.ink .t { color: #C9D8D6; }
+.card.amber { background: #F2B134; border-color: #F2B134; }
+.card.amber h3, .card.amber .t { color: #12262B; }
+
+.pill { display: inline-block; font-size: 26px; font-weight: 600; padding: 12px 28px; border-radius: 40px; background: #F2B134; color: #12262B; margin: 0; }
+.pill.line { background: transparent; color: #F3F1EA; border: 2px solid #5C7C7A; }
+
+.num { font-family: 'DM Sans', Arial, sans-serif; font-size: 40px; font-weight: 700; color: #1F6F6A; margin: 0; line-height: 1; }
+.big { font-family: 'DM Sans', Arial, sans-serif; font-size: 120px; font-weight: 700; line-height: 1; color: #12262B; margin: 0; }
+.dark .big { color: #F2B134; }
+
+/* step cards, slide 3 */
+.step { flex: 1; background: #FBFAF6; border: 2px solid #D3CEBD; border-radius: 16px; padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px; border-top-width: 12px; }
+.step .t { font-size: 25px; line-height: 1.3; margin: 0; color: #3E4E52; }
+.step.code { border-top-color: #1F6F6A; }
+.step.ai { border-top-color: #F2B134; }
+.step.person { border-top-color: #12262B; }
+.tag { font-size: 24px; font-weight: 600; margin: 0; color: #1F6F6A; letter-spacing: 1px; }
+.step.person .tag { color: #12262B; }
+.step.ai .tag { color: #8A5A00; }
+.stepno { font-family: 'DM Sans', Arial, sans-serif; font-size: 34px; font-weight: 700; margin: 0; color: #12262B; }
+.arrowbox { width: 40px; display: flex; align-items: center; justify-content: center; }
+
+table { font-size: 26px; color: #12262B; }
+th { font-weight: 700; }
+
+.status-now { color: #1F6F6A; font-weight: 600; }
+.status-todo { color: #8A5A00; font-weight: 600; }
+
+.strip { background: #12262B; color: #F3F1EA; border-radius: 14px; padding: 22px 32px; font-size: 26px; line-height: 1.35; margin: 0; }
+.strip b { color: #F2B134; }
+
+html,body{margin:0;background:#1b2b2f}
+.frame{width:100vw;height:calc(100vw*9/16);max-height:100vh;overflow:hidden;position:relative;margin:0 auto 12px}
+.slide{width:1920px;height:1080px;transform-origin:0 0;position:absolute;left:0;top:0}
+.slide section{width:1920px;height:1080px;box-sizing:border-box}
+aside{display:none}
+</style></head><body>
+<div class="frame"><div class="slide"><section id="cover" class="dark" style="justify-content:center; gap:40px">
+<p class="eyebrow">STAKEHOLDER OVERVIEW</p>
+<h1>Chemical Process Review Agent</h1>
+<p class="lead" style="max-width:1400px">Checks every new formulation or process against the current safety, maintenance and quality-control documents, shows its sources, and leaves every approval to people.</p>
+<div class="row" style="gap:20px; margin-top:16px">
+<p class="pill">Review agent</p>
+<p class="pill">Question agent</p>
+<p class="pill line">People approve</p>
+</div>
+<p class="foot">Built from the project repository. All test data is synthetic; no real plant data was used.</p>
+<aside>Opening. Two agents on one shared foundation: a review agent that checks a submitted process against the current documents, and a question agent that answers questions from the same documents. Every figure in this deck comes from the project repository or its saved test reports. Where a number does not exist yet, the slide says so and shows what we would count. All data used so far is synthetic.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="what">
+<p class="eyebrow">WHAT IT DOES AND WHO USES IT</p>
+<h2>A second reader that checks every current document for you, shows its sources, and never approves anything</h2>
+<div class="row" style="align-items:stretch">
+<div class="col" style="flex:11">
+<div class="card grow">
+<h3>Review agent</h3>
+<p class="t">An intern types a formulation or uploads a document. The agent checks it against the current safety, maintenance and QC documents, flags each issue with a quoted source, and recommends: proceed to sign-off, revise, or reject.</p>
+</div>
+<div class="card grow">
+<h3>Question agent</h3>
+<p class="t">Answers questions from the same documents, with quotes. It refuses to say a process is safe or approved, to rewrite a recipe, to show anyone else’s submission, or to help make a hazard worse.</p>
+</div>
+</div>
+<div class="card tint" style="flex:9">
+<h3>Who uses it</h3>
+<p class="t"><b>Intern.</b> Submits the process, reads the report, asks questions.</p>
+<p class="t"><b>Supervisor.</b> Reads the report and signs off every review.</p>
+<p class="t"><b>EHS engineer.</b> Also signs off when any flag is critical.</p>
+<p class="t"><b>QC and maintenance.</b> Own the documents the agent reads, and see the flags in their area.</p>
+</div>
+</div>
+<p class="foot">Source: flows/process_review and process_qa READMEs.</p>
+<aside>The review agent never approves. Only recorded human sign-offs do. The supervisor signs every report; an EHS engineer also signs when any flag is critical. The question agent is read-only: it has no tools that act on anything outside itself.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="how">
+<p class="eyebrow">HOW IT WORKS</p>
+<h2>Code checks, AI reads and writes, people decide</h2>
+<div class="row" style="gap:0; align-items:stretch">
+<div class="step person"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">1</p><h3>Submit</h3></div><p class="t">Intern types the form or uploads a document. The agent drafts the form; the intern confirms every field.</p><p class="tag">PERSON + AI</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step code"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">2</p><h3>Hazard rules</h3></div><p class="t">Fixed rules check dangerous mixes, temperature and concentration limits, and equipment ratings.</p><p class="tag">CODE</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step code"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">3</p><h3>Look up</h3></div><p class="t">Searches only the current safety, maintenance and QC documents for passages about this process.</p><p class="tag">CODE</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step ai"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">4</p><h3>Review</h3></div><p class="t">Three AI reviewers, one per area, flag issues. Each flag needs a quoted passage.</p><p class="tag">AI</p></div>
+</div>
+<div class="row" style="gap:0; align-items:stretch; margin-top:24px">
+<div class="step code"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">5</p><h3>Verify</h3></div><p class="t">Drops any claim whose quote is not in a current document. Items with no document become flags.</p><p class="tag">CODE</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step ai"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">6</p><h3>Report</h3></div><p class="t">Looks for conflicts across areas, then writes a summary and a recommendation. Code checks the wording.</p><p class="tag">AI + CODE</p></div>
+<div class="arrowbox"><x-shape kind="arrow-right" style="width:32px; height:20px; background:#1F6F6A"></x-shape></div>
+<div class="step person"><div style="display:flex; gap:14px; align-items:baseline"><p class="stepno">7</p><h3>Sign-off</h3></div><p class="t">Supervisor approves the exact report. An EHS engineer also approves if any flag is critical.</p><p class="tag">PERSON</p></div>
+<div style="width:40px"></div>
+<div class="card tint" style="flex:1; justify-content:center"><p class="t">An incomplete form goes back to the intern and no review runs.</p></div>
+</div>
+<p class="foot">Source: flows/process_review/GRAPH.md and README section 3. Top bar colour: teal = code, amber = AI, dark = person.</p>
+<aside>Walk through the seven steps. Teal bar = plain code that behaves the same way every time. Amber = an AI model reads or writes. Dark = a person. Steps 2 and 5 are the safety net: the hazard rules and the verify step are code, not AI judgment. A review normally makes five AI calls: one to plan searches, three area reviews, one to write the report. A sixth happens if the report wording check sends it back once.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="docs">
+<p class="eyebrow">WHAT IT DEPENDS ON</p>
+<h2>It trusts only current, approved documents, and a missing document becomes a flag</h2>
+<table style="font-size:26px; margin-bottom:28px">
+<tr><th style="width:24%">If the document is…</th><th style="width:38%">The agent…</th><th style="width:38%">Example from the test set</th></tr>
+<tr><td>Replaced or still a draft</td><td>Uses only the newest approved version. Old versions never reach the AI.</td><td>Acetone limit 45 °C (old) vs 35 °C (current): only 35 °C is used.</td></tr>
+<tr><td>Amended</td><td>Merges the approved amendment and cites it as “C+A1”.</td><td>An amendment lowers the toluene limit from 60 °C to 50 °C.</td></tr>
+<tr><td>Retired</td><td>Treats it as missing and flags the gap.</td><td>Reactor R-2 has only a discontinued manual.</td></tr>
+<tr><td>Absent</td><td>Flags it, never silence. No safety document for a chemical is critical.</td><td>A peroxide (MEKP) has no document anywhere.</td></tr>
+<tr><td>Silent on a limit</td><td>Reports no limit rather than guessing one.</td><td>The sodium hydroxide sheet states no temperature limit.</td></tr>
+</table>
+<p class="strip"><b>Depends on people:</b> each new, amended or withdrawn document must be loaded by its owner. Currency is judged as of today’s date and re-read when the report is built.</p>
+<p class="foot">Source: flows/process_review/README.md, WORLD.md and docs.py. Examples are synthetic.</p>
+<aside>The agent does not ask an AI to prefer the newest version. Old versions are never loaded into the search at all, so they cannot be quoted. An approved amendment is merged into its base document and cited as, for example, C+A1. If a chemical, machine or product has no current document, that is reported as a coverage gap. A missing safety document for a chemical is critical, which also brings in the EHS sign-off. A malformed document file stops the whole document set from loading, so document control has real work to do. The check at report time re-reads document status, so a withdrawal during the review is seen at that point.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="roi">
+<p class="eyebrow">HOW WE MEASURE VALUE</p>
+<h2>Value is issues caught before approval; a dollar figure needs a baseline we do not have yet</h2>
+<div class="row" style="align-items:stretch">
+<div style="flex:3">
+<table style="font-size:26px">
+<tr><th style="width:52%">What we would count</th><th style="width:26%">Where it comes from</th><th style="width:22%">Status</th></tr>
+<tr><td>Issues flagged per review, by severity and by area (safety, maintenance, QC)</td><td>Every report</td><td><span class="status-now">Recorded now</span></td></tr>
+<tr><td>Recommendation mix: proceed to sign-off, revise, reject</td><td>Report and sign-offs</td><td><span class="status-now">Recorded now</span></td></tr>
+<tr><td>Forms returned as incomplete</td><td>Every run</td><td><span class="status-now">Recorded now</span></td></tr>
+<tr><td>False-flag rate: flags a reviewer judges wrong</td><td>Not captured; sign-off is approve or deny only</td><td><span class="status-todo">To set up</span></td></tr>
+<tr><td>Reviewer time per review, before and after</td><td>Not recorded</td><td><span class="status-todo">To set up</span></td></tr>
+<tr><td>Cost avoided or incidents prevented</td><td>No baseline or volume given</td><td><span class="status-todo">To set up</span></td></tr>
+</table>
+</div>
+<div class="card amber" style="flex:1; justify-content:center; gap:16px">
+<p class="big" style="color:#12262B">36/36</p>
+<p class="t">planted defects flagged in testing: 12 defect cases, run 3 times each</p>
+<p class="t">Planted by the build team. Not a real-world catch rate.</p>
+</div>
+</div>
+<p class="foot">Source: runs/20261123-120116-process-review-eval-006e12/report.md, flows/process_review/README.md section 2.</p>
+<aside>The project’s own definition of return: flags found per process review. In testing that is the share of deliberately planted defects that were flagged: 36 of 36 across three repeats of 12 defect cases. Clean cases in the same test set must also raise no major or critical flag, which guards against false alarms. What the repository does not have: how many flags supervisors catch today, how many reviews per week, what a review costs now. Those are needed before any dollar figure. The false-flag rate needs one new thing: a place where the reviewer marks each flag right or wrong. Today a sign-off records only approve or deny.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="trust">
+<p class="eyebrow">HOW YOU CAN TRUST AND VERIFY IT</p>
+<h2>Every flag shows its source, and the checks that matter are code, not AI judgment</h2>
+<div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:28px">
+<div class="card"><h3>Quoted sources</h3><p class="t">Each flag names the document, its version and the exact quoted sentence, so you can read the source yourself.</p></div>
+<div class="card"><h3>Hazard rules in code</h3><p class="t">Dangerous mixes, over-limit values and over-rated or out-of-service equipment are flagged by fixed rules. No AI output can remove or soften them.</p></div>
+<div class="card"><h3>A verify step</h3><p class="t">A claim whose quote or number is not in a current document becomes “unverified: check by hand”. It is never silently dropped.</p></div>
+<div class="card"><h3>Repeated testing</h3><p class="t">Review: 51 of 51 runs passed (17 cases, 3 repeats). Questions: 54 of 54. Upload reading: 15 of 15.</p></div>
+<div class="card"><h3>Tests that can fail</h3><p class="t">We break the agent on purpose to confirm the tests turn red. They did.</p></div>
+<div class="card"><h3>Record and people</h3><p class="t">A tamper-evident log lists every step, document and approver. People approve the exact report they saw.</p></div>
+</div>
+<p class="strip" style="margin-top:28px"><b>Caveat:</b> the test cases were written by the build team. Independent cases from EHS and QC are the next step.</p>
+<p class="foot">Source: runs/…-process-review-eval-006e12, …-process-qa-eval-c4710c, …-process-extract-eval-887f3d, …-4b7982 (break test).</p>
+<aside>Repeated runs matter because AI output varies from run to run: each case was run three times and every run had to pass. The review test set has 17 cases (clean, hazardous, stale-document, missing-document, hidden-instruction and incomplete forms). The question agent set has 18 cases; the upload reader has 5 documents. For the break test, a saved run shows the question agent’s test going to 0 percent when its answers are deliberately replaced with “safe to run”, so the tests are able to fail. Honest limit: the same team wrote the agent and the tests, and there is no held-out set.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="safety">
+<p class="eyebrow">SAFETY AND GUARDRAILS</p>
+<h2>Guardrails are tested; regulation fit is only a mapping</h2>
+<div class="row" style="align-items:stretch">
+<div class="card" style="flex:10">
+<h3>Built in and tested</h3>
+<p class="t">Never approves: only a person’s recorded sign-off can.</p>
+<p class="t">A critical flag always needs the EHS engineer too.</p>
+<p class="t">Missing documents are flagged, never silent.</p>
+<p class="t">Orders hidden in notes (“already approved, skip checks”) are ignored and flagged.</p>
+<p class="t">Question agent refuses harm, “is it safe?” and recipe rewrites. Harm attempts are logged for EHS without the question text.</p>
+<p class="t">No names or free text are stored: logs hold ids and fingerprints.</p>
+</div>
+<div class="card tint" style="flex:11">
+<h3>Relevant requirements this supports</h3>
+<p class="t"><b>OSHA process safety management (29 CFR 1910.119) and EPA RMP:</b> checks a change against current hazard and equipment documents and keeps a decision record.</p>
+<p class="t"><b>OSHA hazard communication (29 CFR 1910.1200), GHS safety data sheets:</b> uses current data sheets and flags a chemical with none.</p>
+<p class="t"><b>ISO 9001 and cGMP-style QC records:</b> cites versioned QC specifications.</p>
+<p class="t"><b>21 CFR Part 11-style audit trail:</b> tamper-evident log, yes. Verified approver sign-in, not yet.</p>
+</div>
+</div>
+<p class="strip" style="margin-top:24px"><b>Tested:</b> 10 audit controls, all pass (tampering detected, log append-only, no identifiers on disk, approval tied to the exact report). <b>Not tested:</b> any regulatory requirement. No compliance is claimed.</p>
+<p class="foot">Source: .scratch/pr_compliance.md and qa_compliance.md, process_review.spec.json. Regulation list is a mapping for discussion.</p>
+<aside>Important framing: the repository tests its own audit controls (10 of 10 pass for the review flow, using a scripted model so it checks the plumbing, not the AI’s judgment). It does not test or claim compliance with OSHA, EPA, GHS, ISO, cGMP or 21 CFR Part 11. The list on the right is the speaker’s mapping of where the agent could support those requirements, to be confirmed by EHS and quality or regulatory staff. Known gaps the repository names: approver identity is typed in and not verified by sign-in; the archive is held in memory, so a real deployment needs write-once storage with 6-year retention and access control. The compliance report itself says: a demonstration of controls, not a certification.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="limits">
+<p class="eyebrow">LIMITATIONS</p>
+<h2>It checks a form against documents; it cannot see the plant</h2>
+<div class="row" style="align-items:stretch">
+<div class="card" style="flex:1">
+<h3>It takes at face value</h3>
+<p class="t"><b>The form.</b> Quantities, units, temperatures and pressures are used as typed.</p>
+<p class="t"><b>The documents.</b> It cannot tell a wrong limit from a right one, or notice a gap in what they cover.</p>
+<p class="t"><b>Equipment status.</b> Only as the maintenance document records it, not live lockouts or condition.</p>
+<p class="t"><b>Controls.</b> The form has no field for ventilation or protective gear, so it asks the supervisor to confirm them.</p>
+</div>
+<div class="card tint" style="flex:1">
+<h3>It cannot do</h3>
+<p class="t"><b>Inspect or measure.</b> No sensors, sampling or physical inspection.</p>
+<p class="t"><b>Judge new chemistry.</b> If it is not in the documents, it flags the gap and stops.</p>
+<p class="t"><b>Catch everything.</b> Fixed rules exist only where a document has a rule row. QC specs have none, so QC findings rely on the AI, which can miss things or raise false alarms.</p>
+<p class="t"><b>Check who signs.</b> Approver names are typed in, not verified.</p>
+</div>
+</div>
+<p class="strip" style="margin-top:24px"><b>Test limit:</b> 17 review cases written by the build team, with no held-out set. Real-world accuracy is unknown.</p>
+<p class="foot">Source: flows/process_review/README.md sections 4 to 6 and rules.py.</p>
+<aside>From the repository’s own list of caveats. In an offline dry run with no AI at all, code alone caught 10 of the 12 planted defect cases; the other two (a QC specification range and a QC cure temperature above an equipment rating) need the AI. That is the clearest picture of where the AI matters and where it can miss. Reports are held in memory in the current build, so a server restart loses them; sign-in and protected storage are listed as not yet provided.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="costs">
+<p class="eyebrow">COSTS</p>
+<h2>A review is about five AI calls and 18,000 tokens; the dollar price is still to be set</h2>
+<div class="row" style="align-items:stretch">
+<div style="flex:3">
+<table style="font-size:26px">
+<tr><th style="width:32%">Step in one review</th><th style="width:20%">Model size</th><th style="width:10%">Calls</th><th style="width:38%">Tokens in / out</th></tr>
+<tr><td>Plan searches</td><td>Smallest</td><td>1</td><td>941 / 266</td></tr>
+<tr><td>Safety review</td><td>Mid-size</td><td>1</td><td>3,218 / 526</td></tr>
+<tr><td>Maintenance review</td><td>Mid-size</td><td>1</td><td>2,382 / 189</td></tr>
+<tr><td>QC review</td><td>Mid-size</td><td>1</td><td>2,227 / 396</td></tr>
+<tr><td>Report and conflicts</td><td>Largest</td><td>1.2</td><td>5,338 / 997 per call</td></tr>
+<tr><td><b>Whole review</b></td><td></td><td><b>5.2</b></td><td><b>about 15,300 / 2,600</b></td></tr>
+</table>
+<p class="small" style="margin-top:20px">A question costs about 3 small calls: roughly 2,200 tokens in and 140 out on average.</p>
+</div>
+<div class="card tint" style="flex:2">
+<h3>Infrastructure</h3>
+<p class="t">Web app, API and a developer console, packaged in Docker.</p>
+<p class="t">Redis memory store, held in RAM only.</p>
+<p class="t">Optional embedding service for document search.</p>
+<h3 style="margin-top:8px">Not in the repo</h3>
+<p class="t">Per-token prices, hosting cost, a dollar figure per review.</p>
+</div>
+</div>
+<p class="foot">Source: averages of 48 full reviews in runs/20261123-120116-process-review-eval-006e12/trace.jsonl and 54 questions in …-process-qa-eval-c4710c.</p>
+<aside>How the numbers were derived. A saved test run (the 48 complete reviews among 51; 3 incomplete forms make no model calls) logs input and output tokens for every call. Averages: planning 941 in and 266 out; safety 3,218 and 526; maintenance 2,382 and 189; QC 2,227 and 396. The report step ran 59 times for 48 reviews, so 1.2 calls per review on average because the wording check sent 11 reports back once. Summed per review: about 15,300 tokens in and 2,600 out, which is about 18,000 in total. To turn this into dollars, multiply by current per-token prices for each model size, which are not stored in the repository. The kit’s note of about 2 cents per case per repeat is for a different agent (patient triage), so it is not used here. A cheaper model profile exists in the code but has not been tested for accuracy. Document search uses an optional embedding service; without its key, search falls back to keyword matching. Its cost is not recorded. The largest real cost is likely people time: two sign-offs for critical reports.</aside>
+</section>
+</div></div>
+<div class="frame"><div class="slide"><section id="next" class="dark">
+<p class="eyebrow">DECISION AND NEXT STEPS</p>
+<h2 style="color:#F3F1EA">Proposed: a supervised pilot on real documents, with the value measures switched on</h2>
+<div class="row" style="align-items:stretch">
+<div class="card amber" style="flex:2; justify-content:center; gap:16px">
+<h3>Decision asked</h3>
+<p class="t" style="font-size:28px">Approve a pilot in which the agent reviews real submissions next to today’s process. People still decide everything.</p>
+</div>
+<div class="col" style="flex:5; gap:16px">
+<div class="card ink" style="border-color:#3F5A5C; flex-direction:row; align-items:center; gap:24px; padding:20px 28px"><p class="num" style="color:#F2B134">1</p><p class="t">Name an owner for each document set (safety, maintenance, QC) and load the real current documents.</p></div>
+<div class="card ink" style="border-color:#3F5A5C; flex-direction:row; align-items:center; gap:24px; padding:20px 28px"><p class="num" style="color:#F2B134">2</p><p class="t">Record today’s baseline: review time, flags found, reviews per week.</p></div>
+<div class="card ink" style="border-color:#3F5A5C; flex-direction:row; align-items:center; gap:24px; padding:20px 28px"><p class="num" style="color:#F2B134">3</p><p class="t">Let reviewers mark each flag right or wrong, to measure the false-flag rate.</p></div>
+<div class="card ink" style="border-color:#3F5A5C; flex-direction:row; align-items:center; gap:24px; padding:20px 28px"><p class="num" style="color:#F2B134">4</p><p class="t">Have EHS and QC write independent test cases, then rerun the repeated tests.</p></div>
+<div class="card ink" style="border-color:#3F5A5C; flex-direction:row; align-items:center; gap:24px; padding:20px 28px"><p class="num" style="color:#F2B134">5</p><p class="t">Close the gaps before real use: approver sign-in, protected storage kept 6 years, access control.</p></div>
+</div>
+</div>
+<p class="foot">Source: gaps and owners listed in flows/process_review/README.md section 6. The pilot itself is a proposal, not in the repo.</p>
+<aside>The pilot framing is a proposal from this deck, not a decision recorded in the repository. The five steps come from the repository’s own list of what is not yet provided or not yet established: document owners, a baseline, a false-flag measure, independent test cases, and sign-in, protected storage and a records-policy decision on the 6-year retention period.</aside>
+</section>
+</div></div>
+<script>
+function fit(){document.querySelectorAll('.frame').forEach(f=>{const w=f.clientWidth;f.firstElementChild.style.transform='scale('+w/1920+')';f.style.height=(w*9/16)+'px';f.style.maxHeight='none'})}
+addEventListener('resize',fit);fit();
+</script></body></html>

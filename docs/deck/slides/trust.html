@@ -1,0 +1,15 @@
+<section id="trust">
+<p class="eyebrow">HOW YOU CAN TRUST AND VERIFY IT</p>
+<h2>Every flag shows its source, and the checks that matter are code, not AI judgment</h2>
+<div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:28px">
+<div class="card"><h3>Quoted sources</h3><p class="t">Each flag names the document, its version and the exact quoted sentence, so you can read the source yourself.</p></div>
+<div class="card"><h3>Hazard rules in code</h3><p class="t">Dangerous mixes, over-limit values and over-rated or out-of-service equipment are flagged by fixed rules. No AI output can remove or soften them.</p></div>
+<div class="card"><h3>A verify step</h3><p class="t">A claim whose quote or number is not in a current document becomes “unverified: check by hand”. It is never silently dropped.</p></div>
+<div class="card"><h3>Repeated testing</h3><p class="t">Review: 51 of 51 runs passed (17 cases, 3 repeats). Questions: 54 of 54. Upload reading: 15 of 15.</p></div>
+<div class="card"><h3>Tests that can fail</h3><p class="t">We break the agent on purpose to confirm the tests turn red. They did.</p></div>
+<div class="card"><h3>Record and people</h3><p class="t">A tamper-evident log lists every step, document and approver. People approve the exact report they saw.</p></div>
+</div>
+<p class="strip" style="margin-top:28px"><b>Caveat:</b> the test cases were written by the build team. Independent cases from EHS and QC are the next step.</p>
+<p class="foot">Source: runs/…-process-review-eval-006e12, …-process-qa-eval-c4710c, …-process-extract-eval-887f3d, …-4b7982 (break test).</p>
+<aside>Repeated runs matter because AI output varies from run to run: each case was run three times and every run had to pass. The review test set has 17 cases (clean, hazardous, stale-document, missing-document, hidden-instruction and incomplete forms). The question agent set has 18 cases; the upload reader has 5 documents. For the break test, a saved run shows the question agent’s test going to 0 percent when its answers are deliberately replaced with “safe to run”, so the tests are able to fail. Honest limit: the same team wrote the agent and the tests, and there is no held-out set.</aside>
+</section>

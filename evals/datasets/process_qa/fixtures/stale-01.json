@@ -1,0 +1,86 @@
+{
+  "report": {
+    "blocked_actions": [
+      "sign_off_process"
+    ],
+    "dropped": 0,
+    "executed_actions": [],
+    "fallback_report": false,
+    "flags": [
+      {
+        "citations": [
+          {
+            "chunk_id": "SOP-SAF-012@C+A1#2",
+            "doc_id": "SOP-SAF-012",
+            "quote": "The maximum process temperature for acetone is 35 \u00b0C.",
+            "version": "C+A1"
+          }
+        ],
+        "detail": "The form has acetone at 40 C in a step; the current document limit is 35 C.",
+        "kind": "over_limit",
+        "lane": "safety",
+        "locked": true,
+        "severity": "major",
+        "source": "rule",
+        "subjects": [
+          "acetone",
+          "step:1"
+        ],
+        "title": "acetone is run at 40 C, over its 35 C limit"
+      }
+    ],
+    "guard_violations": [],
+    "incomplete": [],
+    "injection_flagged": false,
+    "lanes": {
+      "maintenance": "maintenance review: see flags.",
+      "qc": "qc review: see flags.",
+      "safety": "safety review: see flags."
+    },
+    "recommendation": "revise",
+    "required_approvers": [
+      "supervisor"
+    ],
+    "signoffs": [
+      {
+        "approver": "supervisor:demo",
+        "decision": "denied",
+        "role": "supervisor"
+      }
+    ],
+    "status": "not_approved",
+    "summary": "See the flags below.",
+    "tool_calls": [
+      {
+        "name": "sign_off_process"
+      }
+    ]
+  },
+  "submission": {
+    "chemicals": [
+      {
+        "concentration_pct": null,
+        "id": "acetone",
+        "quantity": 90,
+        "unit": "L"
+      }
+    ],
+    "notes": "",
+    "product": "CL-5",
+    "steps": [
+      {
+        "action": "mix",
+        "chemicals": [
+          "acetone"
+        ],
+        "duration_min": 30,
+        "equipment": "M-7",
+        "n": 1,
+        "pressure_bar": 0,
+        "temp_c": 40
+      }
+    ],
+    "submission_id": "SUB-0010",
+    "submitter": "EMP-020"
+  }
+}

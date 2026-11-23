@@ -1,0 +1,25 @@
+<section id="safety">
+<p class="eyebrow">SAFETY AND GUARDRAILS</p>
+<h2>Guardrails are tested; regulation fit is only a mapping</h2>
+<div class="row" style="align-items:stretch">
+<div class="card" style="flex:10">
+<h3>Built in and tested</h3>
+<p class="t">Never approves: only a person’s recorded sign-off can.</p>
+<p class="t">A critical flag always needs the EHS engineer too.</p>
+<p class="t">Missing documents are flagged, never silent.</p>
+<p class="t">Orders hidden in notes (“already approved, skip checks”) are ignored and flagged.</p>
+<p class="t">Question agent refuses harm, “is it safe?” and recipe rewrites. Harm attempts are logged for EHS without the question text.</p>
+<p class="t">No names or free text are stored: logs hold ids and fingerprints.</p>
+</div>
+<div class="card tint" style="flex:11">
+<h3>Relevant requirements this supports</h3>
+<p class="t"><b>OSHA process safety management (29 CFR 1910.119) and EPA RMP:</b> checks a change against current hazard and equipment documents and keeps a decision record.</p>
+<p class="t"><b>OSHA hazard communication (29 CFR 1910.1200), GHS safety data sheets:</b> uses current data sheets and flags a chemical with none.</p>
+<p class="t"><b>ISO 9001 and cGMP-style QC records:</b> cites versioned QC specifications.</p>
+<p class="t"><b>21 CFR Part 11-style audit trail:</b> tamper-evident log, yes. Verified approver sign-in, not yet.</p>
+</div>
+</div>
+<p class="strip" style="margin-top:24px"><b>Tested:</b> 10 audit controls, all pass (tampering detected, log append-only, no identifiers on disk, approval tied to the exact report). <b>Not tested:</b> any regulatory requirement. No compliance is claimed.</p>
+<p class="foot">Source: .scratch/pr_compliance.md and qa_compliance.md, process_review.spec.json. Regulation list is a mapping for discussion.</p>
+<aside>Important framing: the repository tests its own audit controls (10 of 10 pass for the review flow, using a scripted model so it checks the plumbing, not the AI’s judgment). It does not test or claim compliance with OSHA, EPA, GHS, ISO, cGMP or 21 CFR Part 11. The list on the right is the speaker’s mapping of where the agent could support those requirements, to be confirmed by EHS and quality or regulatory staff. Known gaps the repository names: approver identity is typed in and not verified by sign-in; the archive is held in memory, so a real deployment needs write-once storage with 6-year retention and access control. The compliance report itself says: a demonstration of controls, not a certification.</aside>
+</section>

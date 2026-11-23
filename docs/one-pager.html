@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Process Review Agent One-Pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one letter-size sheet, header band, two-column grid of short blocks, footer caveat. */
+:root{
+  --ink:#14232b; --muted:#566872; --line:#d5dde0; --paper:#ffffff; --bg:#eef2f3;
+  --navy:#0f3342; --amber:#d98a1f; --ok:#1f7a4d; --todo:#a35f00;
+  --display:"DM Sans",system-ui,sans-serif; --body:"Public Sans",system-ui,sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--body);padding:24px 16px}
+.sheet{max-width:880px;margin:0 auto;background:var(--paper);border:1px solid var(--line);}
+header{background:var(--navy);color:#fff;padding:22px 28px 18px;border-bottom:4px solid var(--amber)}
+h1{font:700 26px/1.15 var(--display);margin:0 0 6px;text-wrap:balance}
+header p{margin:0;color:#cfe0e6;max-width:62ch}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.blk{padding:16px 28px;border-bottom:1px solid var(--line)}
+.blk:nth-child(odd){border-right:1px solid var(--line)}
+.wide{grid-column:1/-1;border-right:0!important}
+h2{font:700 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin:0 0 8px}
+ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:3px}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+.steps li{flex:1 1 120px;border:1px solid var(--line);border-top:3px solid var(--navy);padding:8px 9px;font-size:12.5px}
+.steps li b{display:block;font:700 12.5px var(--display);margin-bottom:2px}
+.tag{display:inline-block;font:600 10px var(--body);padding:1px 6px;border-radius:3px;margin-top:4px;letter-spacing:.04em}
+.code{background:#e3edf1;color:var(--navy)} .ai{background:#fbeccf;color:#7a4a00} .ppl{background:#dcefe4;color:var(--ok)}
+.nums{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.num{border:1px solid var(--line);padding:6px 10px;min-width:92px}
+.num b{display:block;font:700 20px var(--display);font-variant-numeric:tabular-nums;color:var(--ok)}
+.num span{font-size:11.5px;color:var(--muted)}
+.todo{color:var(--todo);font-weight:600}
+footer{padding:12px 28px;background:#f6f8f8;color:var(--muted);font-size:12px}
+@media (max-width:640px){.grid{grid-template-columns:1fr}.blk:nth-child(odd){border-right:0}}
+</style>
+</head>
+<body>
+<main class="sheet">
+<header>
+  <h1>Process Review Agent</h1>
+  <p>Checks every new formulation or process against the current safety, maintenance and QC documents, shows its sources, and leaves the decision to people.</p>
+</header>
+
+<div class="grid">
+  <section class="blk">
+    <h2>What it does and who uses it</h2>
+    <ul>
+      <li>An intern submits a formulation. The agent flags each issue with a quoted passage from the source document and recommends a fix.</li>
+      <li>A second mode answers staff questions from the same documents.</li>
+      <li>Users: interns, supervisors who approve, EHS engineers. QC and maintenance own the documents.</li>
+    </ul>
+  </section>
+
+  <section class="blk">
+    <h2>What it depends on</h2>
+    <ul>
+      <li>Current, correct documents. It reads only the latest version of each.</li>
+      <li>Replaced, draft and retired documents are ignored. A missing document is reported as missing, not guessed.</li>
+      <li>People must keep the document set loaded and up to date.</li>
+    </ul>
+  </section>
+
+  <section class="blk wide">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><b>1. Intake</b>Form is checked. Incomplete forms go back.<br><span class="tag code">CODE</span></li>
+      <li><b>2. Hazard rules</b>Fixed limits and incompatible pairs. Hits cannot be removed.<br><span class="tag code">CODE</span></li>
+      <li><b>3. Search</b>Safety, maintenance and QC documents, all three every time.<br><span class="tag ai">AI + CODE</span></li>
+      <li><b>4. Review</b>Flags with severity and source quote, per area.<br><span class="tag ai">AI</span></li>
+      <li><b>5. Verify</b>Every quote is checked against the document.<br><span class="tag code">CODE</span></li>
+      <li><b>6. Approve</b>A named person approves or denies.<br><span class="tag ppl">PERSON</span></li>
+    </ol>
+  </section>
+
+  <section class="blk">
+    <h2>How we measure value</h2>
+    <ul>
+      <li>Issues flagged, by severity and by area (safety, maintenance, QC). <span class="todo">Recorded now.</span></li>
+      <li>Flags a supervisor accepts or rejects. <span class="todo">To set up.</span></li>
+      <li>Reviewer time per submission and issues caught before approval. <span class="todo">To set up.</span></li>
+      <li>No baseline exists yet for flags caught today or reviews per week.</li>
+    </ul>
+  </section>
+
+  <section class="blk">
+    <h2>How you can trust it</h2>
+    <div class="nums">
+      <div class="num"><b>36/36</b><span>planted defects flagged</span></div>
+      <div class="num"><b>51/51</b><span>review test runs passed</span></div>
+    </div>
+    <ul>
+      <li>Every flag quotes its source. Quotes are machine-checked.</li>
+      <li>Hazard rules sit in code, so the AI cannot lower them.</li>
+      <li>Tamper-evident log of every step. Tests were written by the build team, with no outside set yet.</li>
+    </ul>
+  </section>
+
+  <section class="blk">
+    <h2>Safety and regulations</h2>
+    <ul>
+      <li>Human approval is required. The agent only recommends.</li>
+      <li>Free-text notes are screened for prompt injection. Submitters are pseudonymized. No personal data is written to disk.</li>
+      <li>Supports (not certified for): OSHA PSM and HazCom, EPA RMP, management of change, ISO 9001 and cGMP-style QC records.</li>
+      <li>Regulatory staff should confirm this mapping before external use.</li>
+    </ul>
+  </section>
+
+  <section class="blk">
+    <h2>What it takes at face value</h2>
+    <ul>
+      <li>Quantities, units and temperatures exactly as typed.</li>
+      <li>Equipment condition, only as recorded in the maintenance documents.</li>
+      <li>That the documents are accurate and complete.</li>
+      <li>No live plant data, sensors or physical inspection. Chemistry outside the documents is not judged.</li>
+      <li>Approver identity is typed in, not verified.</li>
+    </ul>
+  </section>
+
+  <section class="blk wide">
+    <h2>Cost</h2>
+    <ul>
+      <li><b>Per review:</b> about 15,300 tokens in and 2,600 out, over about 5 model calls. <b>Per question:</b> about 2,200 in and 140 out. Dollar cost is not recorded, so multiply by current model prices.</li>
+      <li><b>Infrastructure:</b> one small web service, a simple user interface and a Redis cache, run with Docker. No database of personal data.</li>
+    </ul>
+  </section>
+</div>
+<footer><b>Proposed next step:</b> a supervised pilot, with baselines set for flags caught and review time before go-live. Figures come from the repo's latest test runs (3 repeats per case).</footer>
+</main>
+</body>
+</html>

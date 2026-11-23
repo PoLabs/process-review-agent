@@ -1,0 +1,83 @@
+{
+  "report": {
+    "blocked_actions": [
+      "sign_off_process"
+    ],
+    "dropped": 0,
+    "executed_actions": [],
+    "fallback_report": false,
+    "flags": [],
+    "guard_violations": [],
+    "incomplete": [],
+    "injection_flagged": false,
+    "lanes": {
+      "maintenance": "maintenance review: see flags.",
+      "qc": "qc review: see flags.",
+      "safety": "safety review: see flags."
+    },
+    "recommendation": "revise",
+    "required_approvers": [
+      "supervisor"
+    ],
+    "signoffs": [
+      {
+        "approver": "supervisor:demo",
+        "decision": "denied",
+        "role": "supervisor"
+      }
+    ],
+    "status": "not_approved",
+    "summary": "See the flags below.",
+    "tool_calls": [
+      {
+        "name": "sign_off_process"
+      }
+    ]
+  },
+  "submission": {
+    "chemicals": [
+      {
+        "concentration_pct": null,
+        "id": "toluene",
+        "quantity": 120,
+        "unit": "kg"
+      },
+      {
+        "concentration_pct": null,
+        "id": "acrylic_resin_ar7",
+        "quantity": 300,
+        "unit": "kg"
+      }
+    ],
+    "notes": "",
+    "product": "CX-200",
+    "steps": [
+      {
+        "action": "charge",
+        "chemicals": [
+          "toluene",
+          "acrylic_resin_ar7"
+        ],
+        "duration_min": 20,
+        "equipment": "R-101",
+        "n": 1,
+        "pressure_bar": 1,
+        "temp_c": 25
+      },
+      {
+        "action": "mix",
+        "chemicals": [
+          "toluene",
+          "acrylic_resin_ar7"
+        ],
+        "duration_min": 90,
+        "equipment": "R-101",
+        "n": 2,
+        "pressure_bar": 1,
+        "temp_c": 45
+      }
+    ],
+    "submission_id": "SUB-0001",
+    "submitter": "EMP-011"
+  }
+}

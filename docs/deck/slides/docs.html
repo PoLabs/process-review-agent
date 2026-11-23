@@ -1,0 +1,15 @@
+<section id="docs">
+<p class="eyebrow">WHAT IT DEPENDS ON</p>
+<h2>It trusts only current, approved documents, and a missing document becomes a flag</h2>
+<table style="font-size:26px; margin-bottom:28px">
+<tr><th style="width:24%">If the document is…</th><th style="width:38%">The agent…</th><th style="width:38%">Example from the test set</th></tr>
+<tr><td>Replaced or still a draft</td><td>Uses only the newest approved version. Old versions never reach the AI.</td><td>Acetone limit 45 °C (old) vs 35 °C (current): only 35 °C is used.</td></tr>
+<tr><td>Amended</td><td>Merges the approved amendment and cites it as “C+A1”.</td><td>An amendment lowers the toluene limit from 60 °C to 50 °C.</td></tr>
+<tr><td>Retired</td><td>Treats it as missing and flags the gap.</td><td>Reactor R-2 has only a discontinued manual.</td></tr>
+<tr><td>Absent</td><td>Flags it, never silence. No safety document for a chemical is critical.</td><td>A peroxide (MEKP) has no document anywhere.</td></tr>
+<tr><td>Silent on a limit</td><td>Reports no limit rather than guessing one.</td><td>The sodium hydroxide sheet states no temperature limit.</td></tr>
+</table>
+<p class="strip"><b>Depends on people:</b> each new, amended or withdrawn document must be loaded by its owner. Currency is judged as of today’s date and re-read when the report is built.</p>
+<p class="foot">Source: flows/process_review/README.md, WORLD.md and docs.py. Examples are synthetic.</p>
+<aside>The agent does not ask an AI to prefer the newest version. Old versions are never loaded into the search at all, so they cannot be quoted. An approved amendment is merged into its base document and cited as, for example, C+A1. If a chemical, machine or product has no current document, that is reported as a coverage gap. A missing safety document for a chemical is critical, which also brings in the EHS sign-off. A malformed document file stops the whole document set from loading, so document control has real work to do. The check at report time re-reads document status, so a withdrawal during the review is seen at that point.</aside>
+</section>
